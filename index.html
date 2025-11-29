@@ -142,10 +142,26 @@
     }
 
     @media (max-width: 780px) {
-      .nav-links {
-        display: none;
-      }
-    }
+
+  .nav {
+    height: auto;
+    padding: 10px 18px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-left {
+    margin-bottom: 6px;
+  }
+
+  .nav-links {
+    display: flex;       /* show links */
+    flex-wrap: wrap;     /* allow links to wrap on small screens */
+    gap: 12px;
+    font-size: 0.7rem;   /* smaller font so everything fits */
+  }
+}
+
 
     main {
       padding-top: 0px; /* space for fixed nav */
