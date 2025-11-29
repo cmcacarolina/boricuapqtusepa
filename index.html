@@ -2,71 +2,955 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BORICUAPQTUSEPA – Under Construction</title>
+  <title>BoricuaPQtuSepa – Souvenir Shop · Made in Puerto Rico</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BoricuaPQtuSepa – souvenirs made in Puerto Rico: beach-inspired earrings, shells and island memories.">
 
   <style>
     :root {
-      --tan: #C89A70;
-      --sky: #C1ECFD;
-      --cream: #FFF4EA;
+      /* Brand palette */
+      --sand-dark: #7f6445;
+      --sand: #c89a70;
+      --sky: #c1ecfd;
+      --sea: #75e2e0;
+      --shell: #fff4ea;
+      --ink: #141414;
+      --ink-soft: #4b4b4b;
+      --border-soft: #e0d2c2;
+
+      --text-soft: #e5e7eb;
+      --accent-light: #fff4ea;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(90deg, var(--sky), var(--cream));
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--shell);
+      color: var(--ink);
     }
 
-    /* LOGO WITH HOVER */
-    .logo {
-      width: 350px;
-      max-width: 90%;
-      transition: transform 0.35s ease, filter 0.35s ease;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+    /* NAVBAR */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+
+  /* Rockstar invisible navbar */
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0)
+  );
+
+  backdrop-filter: blur(2px); /* smooth Rockstar effect */
+  -webkit-backdrop-filter: blur(2px);
+  border-bottom: none;
+
+  color: #fff; /* text stays white like Rockstar */
+}
+
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255,244,234,0.9);
+      background: #000;
+    }
+
+    .nav-logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-title-main {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-title-sub {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(226,232,240,0.9);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      position: relative;
       cursor: pointer;
     }
 
-    .logo:hover {
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 12px var(--tan));
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      transform-origin: center;
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
     }
 
-    footer {
-  position: fixed;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  color: #7F6445;   /* BORICUA brown */
-  opacity: 0.80;    /* still soft, but readable */
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    main {
+      padding-top: 0px; /* space for fixed nav */
+    }
+
+    /* GENERIC FULL-WIDTH HERO VIDEO SECTION */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      color: #f9fafb;
+      width: 100%;
+    }
+
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 5;
+      padding: 120px 10vw 80px;
+      max-width: 560px;
+    }
+
+    /* HERO 2: center overlay content */
+.hero.hero--right {
+  justify-content: center;        /* center the overlay in the video */
 }
 
+.hero.hero--right .hero-overlay {
+  margin: 0;                      /* no extra left shift */
+  text-align: center;             /* center text/button/icons */
+  padding: 120px 0 80px;          /* vertical padding only so it stays truly centered */
+}
+
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--sea);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw, 2.7rem);
+      font-weight: 650;
+      margin-bottom: 10px;
+      text-shadow: 0 16px 40px rgba(0,0,0,0.7);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      max-width: 36rem;
+      line-height: 1.6;
+      color: #e5e7eb;
+    }
+
+    .hero-tagline {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    /* HERO CTA: button + social icons */
+    .hero-cta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--sea);
+      color: #064e4a;
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+      border-color: rgba(6,78,59,0.12);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 55px rgba(0,0,0,0.9);
+      background: #5bd6d3;
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.4);
+      color: #e5e7eb;
+      border-color: rgba(148,163,184,0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+      border-color: #f9fafb;
+      background: rgba(15,23,42,0.7);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.9);
+    }
+
+    /* Social icons beside the button */
+    .hero-social {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .hero-social-label {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: rgba(15, 23, 42, 0.88);
+      cursor: pointer;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .social-icon--ig svg {
+      fill: none;
+      stroke: var(--accent-light);
+      stroke-width: 1.7;
+    }
+
+    .social-icon--fb svg {
+      fill: var(--accent-light);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-1px);
+      border-color: var(--sea);
+      box-shadow: 0 0 14px rgba(117, 226, 224, 0.85);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    /* SECOND HERO: overlay aligned to right on big screens */
+    .hero--right .hero-overlay {
+      margin-left: auto;
+      text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .hero-overlay,
+      .hero--right .hero-overlay {
+        max-width: none;
+        padding: 100px 24px 60px;
+      }
+      .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* SAND BACKGROUND CONTENT (middle area) */
+    .content-shell {
+      background: var(--shell);
+      padding: 60px 6vw 70px;
+    }
+
+    @media (max-width: 720px) {
+      .content-shell {
+        padding-inline: 16px;
+      }
+    }
+
+    /* HIGHLIGHTS SECTION (cards) */
+    .section-header {
+      text-align: left;
+      max-width: 960px;
+      margin: 0 auto 24px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sand-dark);
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+    }
+
+    .card-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .piece-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.12);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      cursor: pointer;
+    }
+
+    .piece-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 65px rgba(0,0,0,0.16);
+      border-color: var(--sand);
+    }
+
+    .piece-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .piece-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .piece-body {
+      padding: 10px 14px 14px;
+    }
+
+    .piece-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .piece-meta {
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    /* CONTACT / QR SECTION */
+    .contact-grid {
+      max-width: 1100px;
+      margin: 60px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 880px) {
+      .contact-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 16px 18px 18px;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.12);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    @media (max-width: 540px) {
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .qr-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+    }
+
+    .contact-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .social-handle {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: var(--sand-dark);
+      font-weight: 600;
+    }
+
+    /* IMAX-STYLE GALLERY SLIDER (collection section) */
+.gallery-slider {
+  position: relative;
+  max-width: 1100px;
+  margin: 32px auto 0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-slides {
+  position: relative;
+  width: 100%;
+  height: 420px;          /* tweak if you want taller/shorter */
+}
+
+/* Each slide fills the whole frame */
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: galleryFade 56s infinite;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* no padding, full-bleed image */
+  display: block;
+}
+
+/* Fade animation – each slide shows for a bit, then fades out */
+@keyframes galleryFade {
+  0%, 12% {
+    opacity: 1;
+  }
+  18%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Timing for each slide (8 slides → 56s total; 7s per slide) */
+.gallery-slide:nth-child(1) { animation-delay: 0s;  }
+.gallery-slide:nth-child(2) { animation-delay: 7s;  }
+.gallery-slide:nth-child(3) { animation-delay: 14s; }
+.gallery-slide:nth-child(4) { animation-delay: 21s; }
+.gallery-slide:nth-child(5) { animation-delay: 28s; }
+.gallery-slide:nth-child(6) { animation-delay: 35s; }
+.gallery-slide:nth-child(7) { animation-delay: 42s; }
+.gallery-slide:nth-child(8) { animation-delay: 49s; }
+
+/* Logo overlay on top of the slideshow */
+.gallery-logo {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.60);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-logo img {
+  height: 56px;              /* adjust size of the logo */
+  width: auto;
+  display: block;
+}
+
+/* Small screens: make the slider a bit shorter so it fits nicely */
+@media (max-width: 720px) {
+  .gallery-slides {
+    height: 260px;
+  }
+  .gallery-logo {
+    left: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+  }
+  .gallery-logo img {
+    height: 44px;
+  }
+}
+
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 16px 6vw 22px;
+      background: #fdf7f0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .footer-left span:first-child {
+      font-weight: 600;
+      color: var(--sand-dark);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+    }
+
+    .footer-social a {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      color: var(--ink-soft);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--sea);
+      color: #064e4a;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    }
+
+    /* Center the CTA row only on HERO #2 (mountains video) */
+.hero.hero--right .hero-cta {
+  justify-content: center;
+}
+
+/* Also keep the FOLLOW icons centered under the button */
+.hero.hero--right .hero-social {
+  justify-content: center;
+}
+
+/* FIX HERO #2 BUTTON LAYOUT TO MATCH HERO #1 */
+#story .hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+#story .hero-actions a.btn {
+  margin: 0 auto !important;
+}
+
+#story .hero-social {
+  justify-content: center !important;
+  width: 100%;
+}
+
+/* Match IMAX styling from first hero */
+#story .btn-primary {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+}
+
+#story .btn-primary:hover {
+  box-shadow: 0 22px 55px rgba(0,0,0,0.9);
+}
+
+/* ======== AUTO SLIDER / ROCKSTAR STYLE ======== */
+
+.auto-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 0;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(300px * 52); /* number of images * width */
+  animation: scrollSlider 75s linear infinite;
+}
+
+.slider-track img {
+  width: 500px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-right: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+}
+
+/* NO STOP — continuous movement */
+@keyframes scrollSlider {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+
+  
+
+
+
+
+
+
+    
   </style>
 </head>
 <body>
 
-  <!-- Center logo like Our Planet Mall -->
-  <div class="wrapper">
-    <img src="images/Storelogo.png" alt="BORICUAPQTUSEPA Logo" class="logo">
-  </div>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-left">
+      <div class="nav-logo-circle">
+        <img src="images/logo.jpeg" alt="BoricuaPQtuSepa logo">
+      </div>
+      <div>
+        <div class="nav-title-main">BoricuaPQtuSepa</div>
+        <div class="nav-title-sub">Made in Puerto Rico</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#collection" class="nav-link">Collection</a>
+      <a href="#story" class="nav-link">Story</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=myorder@boricuapqtusepa.com" class="nav-link">
+  "Order Now"💳
+</a>
 
-  <!-- Bottom under-construction line -->
+<a href="mailto:myorder@boricuapqtusepa.com" class="nav-link" style="font-size:11px; opacity:0.7; margin-left:8px;">
+  <!-- keeping this line empty so it does not show anything -->
+</a>
+
+
+
+  </header>
+
+  <main>
+    <!-- HERO 1 – BEACH VIDEO (FULL WIDTH) -->
+    <section class="hero" id="home">
+      <video src="videos/Beach2.mp4" autoplay muted loop playsinline></video>
+      <div class="hero-overlay">
+        <div class="hero-label">BoricuaPQtuSepa</div>
+        
+
+        <div class="hero-cta">
+          <div class="hero-actions">
+            <a href="#collection" class="btn btn-primary">View collection</a>
+          </div>
+
+          <div class="hero-social">
+            <span class="hero-social-label">Follow</span>
+
+            <!-- Instagram icon -->
+            <a
+              href="https://www.instagram.com/boricuapqtusepa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon social-icon--ig"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.4" cy="6.6" r="1.2"></circle>
+              </svg>
+            </a>
+
+            <!-- Facebook icon -->
+            <a
+              href="https://www.facebook.com/boricuapqtusepa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon social-icon--fb"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.3 4H16V1H13.8C10.9 1 9.4 2.8 9.4 5.4V7.5H7v3h2.4V23h3.3V10.5h2.7l0.6-3H12.7V5.5C12.7 4.6 13.2 4 14.3 4z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ⭐ NEW — IMAGE BESIDE SOCIAL ICONS ⭐ -->
+    <div class="hero-side-image">
+        <img src="images/BPOTS.png" alt="BPOTS logo">
+    </div>
+
+        
+      </div>
+    </section>
+
+    <!-- MIDDLE CONTENT: CARDS + CONTACT (ON SAND BACKGROUND) -->
+<section class="auto-slider">
+  <div class="slider-track">
+    <img src="images/Banner.jpeg" alt="">
+    <img src="images/Beach.jpeg" alt="">
+    <img src="images/card.jpeg" alt="">
+    <img src="images/earings.jpeg" alt="">
+    <img src="images/PR.png" alt="">
+    <img src="images/PuertoRicoDoor.jpeg" alt="">
+    <img src="images/QR.jpeg" alt="">
+    <img src="images/Storelogo.png" alt="">
+    <img src="images/llav1.jpeg" alt="">
+    <img src="images/llav2.jpeg" alt="">
+    <img src="images/llav3.jpeg" alt="">
+    <img src="images/llav4.jpeg" alt="">
+    <img src="images/llav5.jpeg" alt="">
+    <img src="images/pan1.jpeg" alt="">
+    <img src="images/pan2.jpeg" alt="">
+    <img src="images/pan3.jpeg" alt="">
+    <img src="images/pan4.jpeg" alt="">
+    <img src="images/pan5.jpeg" alt="">
+    <img src="images/pan6.jpeg" alt="">
+    <img src="images/pan7.jpeg" alt="">
+    <img src="images/pan8.jpeg" alt="">
+    <img src="images/pan9.jpeg" alt="">
+    <img src="images/pan10.jpeg" alt="">
+    <img src="images/pan11.jpeg" alt="">
+    <img src="images/pan12.jpeg" alt="">
+    <img src="images/pan13.jpeg" alt="">
+
+
+    <!-- duplicate for seamless loop -->
+    <img src="images/Banner.jpeg" alt="">
+    <img src="images/Beach.jpeg" alt="">
+    <img src="images/card.jpeg" alt="">
+    <img src="images/earings.jpeg" alt="">
+    <img src="images/PR.png" alt="">
+    <img src="images/PuertoRicoDoor.jpeg" alt="">
+    <img src="images/QR.jpeg" alt="">
+    <img src="images/Storelogo.png" alt="">
+    <img src="images/llav1.jpeg" alt="">
+    <img src="images/llav2.jpeg" alt="">
+    <img src="images/llav3.jpeg" alt="">
+    <img src="images/llav4.jpeg" alt="">
+    <img src="images/llav5.jpeg" alt="">
+    <img src="images/pan1.jpeg" alt="">
+    <img src="images/pan2.jpeg" alt="">
+    <img src="images/pan3.jpeg" alt="">
+    <img src="images/pan4.jpeg" alt="">
+    <img src="images/pan5.jpeg" alt="">
+    <img src="images/pan6.jpeg" alt="">
+    <img src="images/pan7.jpeg" alt="">
+    <img src="images/pan8.jpeg" alt="">
+    <img src="images/pan9.jpeg" alt="">
+    <img src="images/pan10.jpeg" alt="">
+    <img src="images/pan11.jpeg" alt="">
+    <img src="images/pan12.jpeg" alt="">
+    <img src="images/pan13.jpeg" alt="">
+
+  </div>
+</section>
+
+
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <!-- HERO 2 – MOUNTAINS VIDEO (FULL WIDTH, SAME STYLE) -->
+  <section class="hero hero--right" id="story">
+    <video src="videos/Mountains.mp4" autoplay muted loop playsinline></video>
+    <div class="hero-overlay">
+      <div class="hero-label">From mountains to sea</div>
+      
+
+      <div class="hero-cta">
+        <div class="hero-actions">
+          <a href="#collection" class="btn btn-primary">View gallery</a>
+        </div>
+
+        <div class="hero-social">
+          <span class="hero-social-label">Follow</span>
+        <!-- Instagram icon -->
+            <a
+              href="https://www.instagram.com/boricuapqtusepa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon social-icon--ig"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.4" cy="6.6" r="1.2"></circle>
+              </svg>
+            </a>
+
+            <!-- Facebook icon -->
+            <a
+              href="https://www.facebook.com/boricuapqtusepa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon social-icon--fb"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.3 4H16V1H13.8C10.9 1 9.4 2.8 9.4 5.4V7.5H7v3h2.4V23h3.3V10.5h2.7l0.6-3H12.7V5.5C12.7 4.6 13.2 4 14.3 4z"></path>
+              </svg>
+            </a>
+
+    
+      </div>
+    </div>
+ <!-- ⭐ NEW — IMAGE BESIDE SOCIAL ICONS ⭐ -->
+    <div class="hero-side-image">
+        <img src="images/BPOTS.png" alt="BPOTS logo">
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    Under Construction 🏗️👷🏽‍♀️🚧 Coming Soon © 2026 · All Rights Reserved ·
-    BORICUAPQTUSEPA · Made in Puerto Rico 
+    <div class="footer-left">
+      <span>BoricuaPQtuSepa</span>
+      <span> · © 2026 · All rights reserved</span>
+    </div>
+    <div class="footer-social">
+      <span>Connect:</span>
+      <a href="https://www.instagram.com/boricuapqtusepa" target="_blank" aria-label="Instagram">
+        <!-- simple IG glyph -->
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#7f6445" stroke-width="1.7"></rect>
+          <circle cx="12" cy="12" r="4.2" fill="none" stroke="#7f6445" stroke-width="1.7"></circle>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/boricuapqtusepa" target="_blank" aria-label="Facebook">
+        <!-- simple F -->
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M14.3 4H16V1H13.8C10.9 1 9.4 2.8 9.4 5.4V7.5H7v3h2.4V23h3.3V10.5h2.7l0.6-3H12.7V5.5C12.7 4.6 13.2 4 14.3 4z" fill="#7f6445"></path>
+        </svg>
+      </a>
+    </div>
   </footer>
 
 </body>
 </html>
+
+
 
 
