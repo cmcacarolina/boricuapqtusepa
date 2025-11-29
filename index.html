@@ -713,19 +713,28 @@
   100% { transform: translateX(-50%); }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
   html, body {
     overflow-x: hidden;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
   .hero-big-text,
   .background-text,
   .big-letters {
     font-size: 22vw; /* scales automatically on phones */
   }
 }
+
+@media (max-width: 767px) {
+  .hero video {
+    object-fit: contain;
+    background: #fff4ea;  /* fills around the video */
+  }
+}
+
+
 
 
 
