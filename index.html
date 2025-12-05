@@ -776,40 +776,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  .auto-slider {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 0;
-  }
-
-  .slider-track {
-    width: auto !important;
-    animation-play-state: running !important;
-  }
-
-  .slider-track img {
-    width: 500px !important;     /* 🤝 match desktop */
-    height: 380px !important;  
-    object-fit: cover;  /* 🤝 match desktop */
-    scroll-snap-align: center;
-    flex-shrink: 0;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .slider-track img:active {
-    transform: scale(1.08);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
-  }
-
-  .auto-slider::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-
 
 
 
@@ -1156,35 +1122,6 @@
       </a>
     </div>
   </footer>
-<script>
-  const track = document.querySelector('.slider-track');
-
-  function isMobile() {
-    return window.innerWidth <= 767;
-  }
-
-  if (track && isMobile()) {
-    let paused = false;
-
-    function pauseScroll() {
-      if (!paused) {
-        track.style.animationPlayState = 'paused';
-        paused = true;
-      }
-    }
-
-    function resumeScroll() {
-      track.style.animationPlayState = 'running';
-      paused = false;
-    }
-
-    track.addEventListener('touchstart', pauseScroll, { passive: true });
-    track.addEventListener('touchmove', pauseScroll, { passive: true });
-    track.addEventListener('touchend', () => {
-      setTimeout(resumeScroll, 1600);
-    });
-  }
-</script>
 
   
 
