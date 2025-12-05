@@ -731,9 +731,15 @@
 
 @media (max-width: 767px) {
   html, body {
-    overflow-x: hidden;
+    overflow-x: hidden;          /* keep this */
+  }
+
+  .auto-slider {
+    overflow-x: auto;            /* allow finger scroll */
+    -webkit-overflow-scrolling: touch;
   }
 }
+
 
 
 /* Mobile-only video pad */
@@ -1122,6 +1128,37 @@
       </a>
     </div>
   </footer>
+
+  <script>
+  const track = document.querySelector('.slider-track');
+
+  function isMobile() {
+    return window.innerWidth <= 767;
+  }
+
+  if (track && isMobile()) {
+    let paused = false;
+
+    function pauseScroll() {
+      if (!paused) {
+        track.style.animationPlayState = 'paused';
+        paused = true;
+      }
+    }
+
+    function resumeScroll() {
+      track.style.animationPlayState = 'running';
+      paused = false;
+    }
+
+    track.addEventListener('touchstart', pauseScroll, { passive: true });
+    track.addEventListener('touchmove', pauseScroll, { passive: true });
+    track.addEventListener('touchend', () => {
+      setTimeout(resumeScroll, 1500);
+    });
+  }
+</script>
+
 
   
 
