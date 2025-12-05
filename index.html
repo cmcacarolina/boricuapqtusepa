@@ -776,9 +776,7 @@
   }
 }
 
-/* ===== MOBILE INTERACTIVE CAROUSEL ===== */
 @media (max-width: 767px) {
-
   .auto-slider {
     overflow-x: auto;
     overflow-y: hidden;
@@ -788,31 +786,28 @@
   }
 
   .slider-track {
-    width: auto !important;     /* unlock track length on mobile */
+    width: auto !important;
     animation-play-state: running !important;
   }
 
   .slider-track img {
-    width: 100vw !important;
-    max-width: 500px !important;
-    height: auto !important;
-    margin-right: 12px !important;
+    width: 500px !important;     /* 🤝 match desktop */
+    height: 380px !important;    /* 🤝 match desktop */
     scroll-snap-align: center;
     flex-shrink: 0;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
-  /* 👆 Touch zoom feedback */
   .slider-track img:active {
     transform: scale(1.08);
     box-shadow: 0 12px 32px rgba(0,0,0,0.45);
   }
 
-  /* Hide scrollbar */
   .auto-slider::-webkit-scrollbar {
     display: none;
   }
 }
+
 
 
 
