@@ -710,8 +710,8 @@
 
 .slider-track {
   display: flex;
-  width: calc(300px * 52); /* number of images * width */
-  animation: scrollSlider 75s linear infinite;
+  width: calc(300px * 150); /* number of images * width */
+  animation: scrollSlider 175s linear infinite;
 }
 
 .slider-track img {
@@ -775,6 +775,44 @@
     bottom: 12px;
   }
 }
+
+/* ===== MOBILE INTERACTIVE CAROUSEL ===== */
+@media (max-width: 767px) {
+
+  .auto-slider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px 0 30px;
+  }
+
+  .slider-track {
+    width: auto !important;     /* unlock track length on mobile */
+    animation-play-state: running !important;
+  }
+
+  .slider-track img {
+    width: 82vw !important;
+    height: 260px !important;
+    margin-right: 14px !important;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  /* 👆 Touch zoom feedback */
+  .slider-track img:active {
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  }
+
+  /* Hide scrollbar */
+  .auto-slider::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
 
 
@@ -891,6 +929,33 @@
     <img src="images/llav3.JPG" alt="">
     <img src="images/llav4.JPG" alt="">
     <img src="images/llav5.JPG" alt="">
+    <img src="images/llav6.JPG" alt="">
+    <img src="images/llav7.JPG" alt="">
+    <img src="images/llav8.JPG" alt="">
+    <img src="images/llav9.JPG" alt="">
+    <img src="images/llav10.JPG" alt="">
+    <img src="images/llav11.JPG" alt="">
+    <img src="images/llav12.JPG" alt="">
+    <img src="images/llav13.JPG" alt="">
+    <img src="images/llav14.JPG" alt="">
+    <img src="images/llav15.JPG" alt="">
+    <img src="images/llav16.JPG" alt="">
+    <img src="images/llav17.JPG" alt="">
+    <img src="images/llav18.JPG" alt="">
+    <img src="images/llav19.JPG" alt="">
+    <img src="images/llav20.JPG" alt="">
+    <img src="images/llav21.JPG" alt="">
+    <img src="images/llav22.JPG" alt="">
+    <img src="images/llav23.JPG" alt="">
+    <img src="images/llav24.JPG" alt="">
+    <img src="images/llav25.JPG" alt="">
+    <img src="images/llav26.JPG" alt="">
+    <img src="images/llav27.JPG" alt="">
+    <img src="images/llav28.JPG" alt="">
+    <img src="images/llav29.JPG" alt="">
+    <img src="images/llav30.JPG" alt="">
+    <img src="images/llav31.JPG" alt="">
+    <img src="images/llav32.JPG" alt="">
     <img src="images/pan1.JPG" alt="">
     <img src="images/pan2.JPG" alt="">
     <img src="images/pan3.JPG" alt="">
@@ -904,6 +969,30 @@
     <img src="images/pan11.JPG" alt="">
     <img src="images/pan12.JPG" alt="">
     <img src="images/pan13.JPG" alt="">
+    <img src="images/pan14.JPG" alt="">
+    <img src="images/pan15.JPG" alt="">
+    <img src="images/pan16.JPG" alt="">
+    <img src="images/pan17.JPG" alt="">
+    <img src="images/pan18.JPG" alt="">
+    <img src="images/pan19.JPG" alt="">
+    <img src="images/pan20.JPG" alt="">
+    <img src="images/pan21.JPG" alt="">
+    <img src="images/pan22.JPG" alt="">
+    <img src="images/pan23.JPG" alt="">
+    <img src="images/pan24.JPG" alt="">
+    <img src="images/pan25.JPG" alt="">
+    <img src="images/pan26.JPG" alt="">
+    <img src="images/pan27.JPG" alt="">
+    <img src="images/pan28.JPG" alt="">
+    <img src="images/pan29.JPG" alt="">
+    <img src="images/pan30.JPG" alt="">
+    <img src="images/pan31.JPG" alt="">
+    <img src="images/pan32.JPG" alt="">
+    <img src="images/pan33.JPG" alt="">
+    <img src="images/pan34.JPG" alt="">
+    <img src="images/pan35.JPG" alt="">
+    <img src="images/pan36.JPG" alt="">
+    <img src="images/pan37.JPG" alt="">
 
 
     <!-- duplicate for seamless loop -->
@@ -920,6 +1009,33 @@
     <img src="images/llav3.JPG" alt="">
     <img src="images/llav4.JPG" alt="">
     <img src="images/llav5.JPG" alt="">
+    <img src="images/llav6.JPG" alt="">
+    <img src="images/llav7.JPG" alt="">
+    <img src="images/llav8.JPG" alt="">
+    <img src="images/llav9.JPG" alt="">
+    <img src="images/llav10.JPG" alt="">
+    <img src="images/llav11.JPG" alt="">
+    <img src="images/llav12.JPG" alt="">
+    <img src="images/llav13.JPG" alt="">
+    <img src="images/llav14.JPG" alt="">
+    <img src="images/llav15.JPG" alt="">
+    <img src="images/llav16.JPG" alt="">
+    <img src="images/llav17.JPG" alt="">
+    <img src="images/llav18.JPG" alt="">
+    <img src="images/llav19.JPG" alt="">
+    <img src="images/llav20.JPG" alt="">
+    <img src="images/llav21.JPG" alt="">
+    <img src="images/llav22.JPG" alt="">
+    <img src="images/llav23.JPG" alt="">
+    <img src="images/llav24.JPG" alt="">
+    <img src="images/llav25.JPG" alt="">
+    <img src="images/llav26.JPG" alt="">
+    <img src="images/llav27.JPG" alt="">
+    <img src="images/llav28.JPG" alt="">
+    <img src="images/llav29.JPG" alt="">
+    <img src="images/llav30.JPG" alt="">
+    <img src="images/llav31.JPG" alt="">
+    <img src="images/llav32.JPG" alt="">
     <img src="images/pan1.JPG" alt="">
     <img src="images/pan2.JPG" alt="">
     <img src="images/pan3.JPG" alt="">
@@ -933,6 +1049,30 @@
     <img src="images/pan11.JPG" alt="">
     <img src="images/pan12.JPG" alt="">
     <img src="images/pan13.JPG" alt="">
+    <img src="images/pan14.JPG" alt="">
+    <img src="images/pan15.JPG" alt="">
+    <img src="images/pan16.JPG" alt="">
+    <img src="images/pan17.JPG" alt="">
+    <img src="images/pan18.JPG" alt="">
+    <img src="images/pan19.JPG" alt="">
+    <img src="images/pan20.JPG" alt="">
+    <img src="images/pan21.JPG" alt="">
+    <img src="images/pan22.JPG" alt="">
+    <img src="images/pan23.JPG" alt="">
+    <img src="images/pan24.JPG" alt="">
+    <img src="images/pan25.JPG" alt="">
+    <img src="images/pan26.JPG" alt="">
+    <img src="images/pan27.JPG" alt="">
+    <img src="images/pan28.JPG" alt="">
+    <img src="images/pan29.JPG" alt="">
+    <img src="images/pan30.JPG" alt="">
+    <img src="images/pan31.JPG" alt="">
+    <img src="images/pan32.JPG" alt="">
+    <img src="images/pan33.JPG" alt="">
+    <img src="images/pan34.JPG" alt="">
+    <img src="images/pan35.JPG" alt="">
+    <img src="images/pan36.JPG" alt="">
+    <img src="images/pan37.JPG" alt="">
 
   </div>
 </section>
@@ -1019,6 +1159,35 @@
       </a>
     </div>
   </footer>
+<script>
+  const track = document.querySelector('.slider-track');
+
+  function isMobile() {
+    return window.innerWidth <= 767;
+  }
+
+  if (track && isMobile()) {
+    let paused = false;
+
+    function pauseScroll() {
+      if (!paused) {
+        track.style.animationPlayState = 'paused';
+        paused = true;
+      }
+    }
+
+    function resumeScroll() {
+      track.style.animationPlayState = 'running';
+      paused = false;
+    }
+
+    track.addEventListener('touchstart', pauseScroll, { passive: true });
+    track.addEventListener('touchmove', pauseScroll, { passive: true });
+    track.addEventListener('touchend', () => {
+      setTimeout(resumeScroll, 1600);
+    });
+  }
+</script>
 
   
 
