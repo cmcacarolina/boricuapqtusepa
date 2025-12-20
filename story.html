@@ -859,6 +859,74 @@
   }
 }
 
+/* ================================
+   ✅ IMAX VIDEO FIX (NO VANILLA PAD)
+   ================================ */
+
+/* your empty wrapper is creating the “vanilla” area on mobile */
+.hero-video-wrapper{
+  display:none !important;
+}
+
+/* force true full-screen hero on mobile + desktop */
+.hero{
+  min-height: 100svh !important;  /* iPhone safe */
+  height: 100svh !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* make the video always full-bleed */
+.hero > video{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+
+/* just in case any background shows below */
+body{
+  background:#000 !important;
+}
+
+
+/* ================================
+   ✅ TEXT STYLE FIX (clean iMessage/vanilla vibe)
+   ================================ */
+
+.hero-side-message{
+  z-index: 8 !important;
+  padding: 0 16px;
+}
+
+.hero-side-message p{
+  max-width: min(92vw, 720px) !important;
+
+  /* vanilla-white like your BPOTS logo */
+  color:#f7f3eb !important;
+
+  /* “bubble” readability over video */
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 18px 20px;
+  border-radius: 26px;
+
+  font-size: clamp(15px, 3.8vw, 22px) !important;
+  line-height: 1.55 !important;
+  font-weight: 600 !important;
+
+  text-shadow: 0 10px 30px rgba(0,0,0,.55) !important;
+}
+
+.hero-side-message p strong{
+  color:#fff4ea !important;
+}
+
+
 
 
 
