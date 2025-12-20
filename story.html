@@ -926,6 +926,37 @@ body{
   color:#fff4ea !important;
 }
 
+/* ================================
+   🚫 REMOVE MOBILE BOTTOM PAD
+   ================================ */
+
+/* Force true screen height on iOS */
+.hero{
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: 100svh !important;
+  overflow: hidden !important;
+}
+
+/* Kill any section spacing after hero */
+.hero + *{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Prevent body from adding scroll space */
+html, body{
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* iOS Safari specific */
+@supports (-webkit-touch-callout: none){
+  body{
+    overscroll-behavior: none;
+  }
+}
+
 
 
 
